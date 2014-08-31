@@ -1,4 +1,4 @@
 CourseScheduler
 ===============
 
-An simple scheduler for primary school courses
+A simple scheduler for primary school courses
