@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=" http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+	<style type="text/css">
+		*{
+			  margin: 0;
+			  padding: 0;
+			  box-sizing: border-box;
+		}
+		.scheduleTable{
+		  font-size: .9em;
+		  font-weight: 300;
+		  text-align: center;
+		  line-height: 40px;
+		  border-spacing: 0px;
+		  width: 600px;
+		  margin: 60px auto;
+		}
+
+		.scheduleTable th {background-color:white;width: 90px;font-weight: bold;}
+		.scheduleTable .title{font-family:KaiTi;font-size:38px}
+		.scheduleTable .subtitle{text-align:left;font-size:24px;}
+		.scheduleTable .titletime{text-align:right;font-size:24px;}
+		
+		.scheduleTable tbody {background-color:black;}
+		.scheduleTable tbody tr:first-child td{border-top:2px solid black}
+		.scheduleTable tbody tr td:first-child{border-left:2px solid black}
+		.scheduleTable tbody tr:last-child td{border-bottom:2px solid black}
+		.scheduleTable tbody tr td:last-child{border-right:2px solid black}
+		.scheduleTable tbody tr td:hover {background-color: #f0fbff;}
+		.scheduleTable tbody tr td {background-color:white;font-size:24px;height:46px;line-height:24px;width: 90px;border-bottom: 1px solid black;border-right: 1px solid black;}
+		.scheduleTable tbody .split {border-right: 2px solid black;}
+
+	</style>
+</head>
+<body>
+	${content}
+</body>
+</html>
