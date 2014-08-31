@@ -40,11 +40,18 @@ public class ReportProducer {
 		
 	}
 	
-	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool , CellDecorator<T> cellDecorator,Comparator<T> comparator){
-		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator));
+	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
+			CellDecorator<T> cellDecorator,Comparator<T> comparator){
+		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator,""));
 	}
 	
-	public <T>String getAllTable( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool , CellDecorator<T> cellDecorator,Comparator<T> comparator){
+	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
+			CellDecorator<T> cellDecorator,Comparator<T> comparator,String specialClass){
+		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator,specialClass));
+	}
+	
+	public <T>String getAllTable( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
+			CellDecorator<T> cellDecorator,Comparator<T> comparator,String specialClass){
 		StringBuilder stringBuilder = new StringBuilder();
 		LinkedList<BoatAccessor<T, ?>> tmpList = new LinkedList<>();
 		for(BoatAccessor<T, ?> accessor:accessorPool.getAllBoats()){
@@ -62,7 +69,7 @@ public class ReportProducer {
 		}
 		int i=1;
 		for(BoatAccessor<T, ?> accessor:tmpList){
-			stringBuilder.append(getTable((BoatAccessor<T,CourseCombo>)accessor,cellDecorator));
+			stringBuilder.append(getTable((BoatAccessor<T,CourseCombo>)accessor,cellDecorator,specialClass));
 			if(i%2==0)
 				stringBuilder.append("<div style=\"page-break-after :always\"></div>");
 			i++;
@@ -72,7 +79,7 @@ public class ReportProducer {
 	
 
 	
-	public <T>String getTable(BoatAccessor<T,CourseCombo> scheduler, CellDecorator<T> cellDecorator) {
+	public <T>String getTable(BoatAccessor<T,CourseCombo> scheduler, CellDecorator<T> cellDecorator,String specialClass) {
 		final String[] weekDays = new String[]{"\u661f\u671f\u4e00","\u661f\u671f\u4e8c","\u661f\u671f\u4e09","\u661f\u671f\u56db","\u661f\u671f\u4e94"};
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<table class=\"scheduleTable\">");
@@ -92,9 +99,9 @@ public class ReportProducer {
 		for(int i=0;i<tableContent.length;i++){
 			stringBuilder.append("<tr>").append("<td>").append(weekDays[i]).append("</td>");
 			for(int j=0;j<tableContent[i].length;j++){
-				String prefix="<td>";
+				String prefix="<td class=\""+specialClass+"\">";
 				if(j==3){
-					prefix="<td class=\"split\">";
+					prefix="<td class=\""+specialClass+" split\">";
 				}
 				if(tableContent[i][j]==null){
 					stringBuilder.append(prefix+"</td>");				

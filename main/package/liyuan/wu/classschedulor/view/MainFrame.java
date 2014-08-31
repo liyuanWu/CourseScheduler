@@ -432,7 +432,7 @@ public class MainFrame {
 				  }
 				  try {
 					FileOutputStream outputStream = new FileOutputStream(newFile);
-					reportProducer.addContent(teacherSchedulerAccessorPool, new CellDecorator.TeacherCellDecorator(),new Teacher.TeacherComparator());
+					reportProducer.addContent(teacherSchedulerAccessorPool, new CellDecorator.TeacherCellDecorator(),new Teacher.TeacherComparator(),"higher");
 					reportProducer.addContent(teacherSchedulerAccessorPool, new StadentTeacherDecorator(),new Teacher.TeacherComparator());
 //					reportProducer.addContent(classroomSchedulerAccessorPool, new CellDecorator.ClassroomCellDecorator(),new Classroom.ClassroomComparator());
 					reportProducer.addContent(classroomSchedulerAccessorPool, new StadentClassroomDecorator(),new Classroom.ClassroomComparator());
