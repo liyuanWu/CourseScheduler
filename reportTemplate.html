@@ -9,29 +9,37 @@
 			  box-sizing: border-box;
 		}
 		.scheduleTable{
+		  color: #333;
+		  font-family: sans-serif;
 		  font-size: .9em;
 		  font-weight: 300;
 		  text-align: center;
 		  line-height: 40px;
-		  border-spacing: 0px;
-		  width: 600px;
-		  margin: 60px auto;
+		  border-spacing: 0;
+		  border: 1px solid #428bca;
+		  width: 500px;
+		  margin: 20px auto;
 		}
 
-		.scheduleTable th {background-color:white;width: 90px;font-weight: bold;}
-		.scheduleTable .title{font-family:KaiTi;font-size:38px}
-		.scheduleTable .subtitle{text-align:left;font-size:24px;}
-		.scheduleTable .titletime{text-align:right;font-size:24px;}
-		
-		.scheduleTable tbody {background-color:black;}
-		.scheduleTable tbody tr:first-child td{border-top:2px solid black}
-		.scheduleTable tbody tr td:first-child{border-left:2px solid black}
-		.scheduleTable tbody tr:last-child td{border-bottom:2px solid black}
-		.scheduleTable tbody tr td:last-child{border-right:2px solid black}
+		.scheduleTable 	thead tr:first-child {
+		  background: #428bca;
+		  color: #fff;
+		  border: none;
+		}
+
+		.scheduleTable th {width: 90px;font-weight: bold;}
+		.scheduleTable th:first-child, td:first-child {width:40px;padding: 0 15px 0 20px;}
+
+		.scheduleTable thead tr:last-child th {border-bottom: 2px solid #ddd;}
+
 		.scheduleTable tbody tr td:hover {background-color: #f0fbff;}
-		.scheduleTable tbody tr td {background-color:white;font-size:24px;height:45px;line-height:24px;width: 90px;border-bottom: 1px solid black;border-right: 1px solid black;}
-		.scheduleTable tbody tr .higher {height:56px;font-size:20px;}
-		.scheduleTable tbody .split {border-right: 2px solid black;}
+		.scheduleTable tbody tr:last-child td {border: none;}
+		.scheduleTable tbody td {height:35px;line-height:15px;width: 90px;border-bottom: 1px solid #ddd;}
+
+		.scheduleTable td:last-child {
+		  text-align: right;
+		  padding-right: 10px;
+		}
 
 	</style>
 </head>

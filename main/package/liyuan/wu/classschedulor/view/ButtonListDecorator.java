@@ -20,7 +20,7 @@ public interface ButtonListDecorator<T> {
 
 		@Override
 		public String decorate(UnarrangedCourse unarrangedCourse, int number) {
-			return (unarrangedCourse.getTeacher().getName().equals("_universe")?"":unarrangedCourse.getTeacher().getName()+ "-")
+			return unarrangedCourse.getTeacher().getName() + "-"
 					+ unarrangedCourse.getCourse().getName() + "-" + number;
 		}
 		

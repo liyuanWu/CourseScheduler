@@ -43,8 +43,7 @@ public class Synchronizator <X extends BasicCombo>{
 	
 	public boolean canAdd(CourseCombo courseCombo){
 		return classroomPool.getBoat(courseCombo.getClassRoom()).canAdd(courseCombo.getWeekDay(), courseCombo.getTime()) &&
-				(courseCombo.getTeacher().getName().equals("_universe")||
-				(teacherPool.getBoat(courseCombo.getTeacher()).canAdd(courseCombo.getWeekDay(), courseCombo.getTime())));
+				teacherPool.getBoat(courseCombo.getTeacher()).canAdd(courseCombo.getWeekDay(), courseCombo.getTime());
 	}
 	
 	public void sychronizeDelete(Boat<?,X> invoker, X x){
@@ -62,10 +61,9 @@ public class Synchronizator <X extends BasicCombo>{
 		QueryResult queryResult = new QueryResult();
 		for(int i=0;i<5;i++){
 			for(int j=0;j<6;j++){
-				// (classroom has space) && (teacher has space(unless teacher =  _universe))
-				if(classroomPool.getBoat(unarrangedCourse.getClassRoom()).canAdd(new WeekDay(i), new Time(j)) 
-						&&((unarrangedCourse.getTeacher().getName().equals("_universe"))
-								|| (teacherPool.getBoat(unarrangedCourse.getTeacher()).canAdd(new WeekDay(i), new Time(j))))){
+				if((unarrangedCourse.getTeacher().getName().equals("_universe"))
+                      ||  (classroomPool.getBoat(unarrangedCourse.getClassRoom()).canAdd(new WeekDay(i), new Time(j))
+                        && teacherPool.getBoat(unarrangedCourse.getTeacher()).canAdd(new WeekDay(i), new Time(j)))){
 					queryResult.addQueryResult(new SingleQueryResult(new WeekDay(i), new Time(j), unarrangedCourse.getTeacher(),unarrangedCourse.getClassRoom(),CELLATTRIBUTE.EMPTY));
 				}else{
 					queryResult.addQueryResult(new SingleQueryResult(new WeekDay(i), new Time(j), unarrangedCourse.getTeacher(),unarrangedCourse.getClassRoom(),CELLATTRIBUTE.UNEXCHANGABLE));

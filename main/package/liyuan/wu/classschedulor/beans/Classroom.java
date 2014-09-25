@@ -21,7 +21,7 @@ public class Classroom implements Cloneable {
 	}
 	
 	public String toString(){
-		return grade+"年级"+classNumber+"班";
+		return grade+"\u5e74\u7ea7"+classNumber;
 		}
 
 	public Object clone() {

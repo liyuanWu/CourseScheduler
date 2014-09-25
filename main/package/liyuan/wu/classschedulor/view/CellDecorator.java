@@ -17,8 +17,7 @@ public interface CellDecorator<T>{
 	class ClassroomCellDecorator implements CellDecorator<Classroom>{
 		@Override
 		public String decorate(CourseCombo courseCombo) {
-			return courseCombo.getCourse().getName()+"\r\n"+
-		(courseCombo.getTeacher().getName().equals("_universe")?"":courseCombo.getTeacher().getName());
+			return courseCombo.getCourse().getName()+"\r\n"+courseCombo.getTeacher().getName();
 		}
 	}
 }

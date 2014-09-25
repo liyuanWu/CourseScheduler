@@ -40,18 +40,11 @@ public class ReportProducer {
 		
 	}
 	
-	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
-			CellDecorator<T> cellDecorator,Comparator<T> comparator){
-		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator,""));
+	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool , CellDecorator<T> cellDecorator,Comparator<T> comparator){
+		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator));
 	}
 	
-	public <T>void addContent( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
-			CellDecorator<T> cellDecorator,Comparator<T> comparator,String specialClass){
-		stringBuffer.append(getAllTable(accessorPool, cellDecorator,comparator,specialClass));
-	}
-	
-	public <T>String getAllTable( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool ,
-			CellDecorator<T> cellDecorator,Comparator<T> comparator,String specialClass){
+	public <T>String getAllTable( AccessorPool<T,BoatAccessor<T,CourseCombo>> accessorPool , CellDecorator<T> cellDecorator,Comparator<T> comparator){
 		StringBuilder stringBuilder = new StringBuilder();
 		LinkedList<BoatAccessor<T, ?>> tmpList = new LinkedList<>();
 		for(BoatAccessor<T, ?> accessor:accessorPool.getAllBoats()){
@@ -67,29 +60,28 @@ public class ReportProducer {
 				tmpList.add(accessor);
 			}
 		}
-		int i=1;
+        int i=1;
 		for(BoatAccessor<T, ?> accessor:tmpList){
-			stringBuilder.append(getTable((BoatAccessor<T,CourseCombo>)accessor,cellDecorator,specialClass));
-			if(i%2==0)
-				stringBuilder.append("<div style=\"page-break-after :always\"></div>");
-			i++;
+			stringBuilder.append(getTable((BoatAccessor<T,CourseCombo>)accessor,cellDecorator));
+            if(i%2==0)
+                stringBuilder.append("<div style=\"PAGE-BREAK-AFTER: always\"></div>");
+            i++;
 		}
 		return stringBuilder.toString();
 	}
 	
 
 	
-	public <T>String getTable(BoatAccessor<T,CourseCombo> scheduler, CellDecorator<T> cellDecorator,String specialClass) {
+	public <T>String getTable(BoatAccessor<T,CourseCombo> scheduler, CellDecorator<T> cellDecorator) {
 		final String[] weekDays = new String[]{"\u661f\u671f\u4e00","\u661f\u671f\u4e8c","\u661f\u671f\u4e09","\u661f\u671f\u56db","\u661f\u671f\u4e94"};
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<table class=\"scheduleTable\">");
-		stringBuilder.append("<thead><tr>");
+		stringBuilder.append("<thead><tr><th colspan=\"7\" class=\"title\">\u8bfe\u7a0b\u8868</th></tr><tr>");
 		String title=scheduler.getIdentifier().toString();
-		stringBuilder.append("<th colspan=\"7\" class=\"title\">课程表</th></tr>");
-		stringBuilder.append("<tr><th colspan=\"4\" class=\"subtitle\">").append(title).append("</th>");
-		stringBuilder.append("<th colspan=\"4\" class=\"titletime\">2014年下期</th>");
-		stringBuilder.append("</tr>");
-		stringBuilder.append("</tdead><tbody><tr><td></td><td>\u7b2c1\u8282</td><td>\u7b2c2\u8282</td><td>\u7b2c3\u8282</td><td class=\"split\">\u7b2c4\u8282</td><td>\u7b2c5\u8282</td><td>\u7b2c6\u8282</td></tr>");
+		stringBuilder.append("<th colspan=\"4\" class=\"identifier\">").append(title).append("</th>");
+        stringBuilder.append("<th colspan=\"3\" class=\"titletime\">2014\u5e74\u4e0b\u671f</th></tr>");
+		stringBuilder.append("</thead><tbody>");
+        stringBuilder.append("<tr><td></td><td>\u7b2c1\u8282</td><td>\u7b2c2\u8282</td><td>\u7b2c3\u8282</td><td>\u7b2c4\u8282</td><td>\u7b2c5\u8282</td><td>\u7b2c6\u8282</td></tr>");
 
 		String[][] tableContent = new String[5][6];
 		for(CourseCombo course:scheduler.getAll()){
@@ -99,14 +91,10 @@ public class ReportProducer {
 		for(int i=0;i<tableContent.length;i++){
 			stringBuilder.append("<tr>").append("<td>").append(weekDays[i]).append("</td>");
 			for(int j=0;j<tableContent[i].length;j++){
-				String prefix="<td class=\""+specialClass+"\">";
-				if(j==3){
-					prefix="<td class=\""+specialClass+" split\">";
-				}
 				if(tableContent[i][j]==null){
-					stringBuilder.append(prefix+"</td>");				
+					stringBuilder.append("<td></td>");				
 				}else{
-					stringBuilder.append(prefix).append(tableContent[i][j]).append("</td>");					
+					stringBuilder.append("<td>").append(tableContent[i][j]).append("</td>");					
 				}
 			}
 			stringBuilder.append("</tr>");	

@@ -70,7 +70,7 @@ public class MainFrame {
 	
 	private RefreshNotificationManager refreshNotificatioNManager;
 	private Synchronizator<CourseCombo> schedulerSynchronizator;
-	private  Synchronizator<UnarrangedCourse> arrangePoolSynchronizator;
+	private Synchronizator<UnarrangedCourse> arrangePoolSynchronizator;
 	private FileRecorder recorder;
 	private List<Teacher> teacherSet;
 	private List<Classroom> classroomSet;
@@ -106,7 +106,7 @@ public class MainFrame {
 			IllegalAccessException, UnsupportedLookAndFeelException {
 //		String windows = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 //		UIManager.setLookAndFeel(windows);
-		UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
+//		UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
 //		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 		teacherSchedulerAccessorPool = new AccessorPool<Teacher, BoatAccessor<Teacher,CourseCombo>>();
 		classroomSchedulerAccessorPool = new AccessorPool<Classroom,  BoatAccessor<Classroom,CourseCombo>>();
@@ -360,7 +360,7 @@ public class MainFrame {
 		menuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("\u4FDD\u5B58");
+				fileChooser.setDialogTitle("\u4fdd\u5b58");
 				fileChooser	.setFileFilter(new UORFileFilter());
 				int fresult;
 				fresult = fileChooser.showSaveDialog(MainFrame.this.frame);
@@ -403,17 +403,17 @@ public class MainFrame {
 				}
 				
 			}
-			class StadentTeacherDecorator implements CellDecorator<Teacher>{
 
-				@Override
-				public String decorate(CourseCombo courseCombo) {
-					return courseCombo.getCourse().getName();
-				}
-				
-			}
+
+            class StudentTeacherCellDecorator implements CellDecorator<Teacher> {
+                @Override
+                public String decorate(CourseCombo courseCombo) {
+                    return courseCombo.getCourse().getName();
+                }
+            }
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
-				fileChooser.setDialogTitle("\u5BFC\u51FA");
+				fileChooser.setDialogTitle("\u5bfc\u51fa");
 				fileChooser	.setFileFilter(new HTMLFileFilter());
 				int fresult;
 				fresult = fileChooser.showSaveDialog(MainFrame.this.frame);
@@ -432,9 +432,9 @@ public class MainFrame {
 				  }
 				  try {
 					FileOutputStream outputStream = new FileOutputStream(newFile);
-					reportProducer.addContent(teacherSchedulerAccessorPool, new CellDecorator.TeacherCellDecorator(),new Teacher.TeacherComparator(),"higher");
-					reportProducer.addContent(teacherSchedulerAccessorPool, new StadentTeacherDecorator(),new Teacher.TeacherComparator());
-//					reportProducer.addContent(classroomSchedulerAccessorPool, new CellDecorator.ClassroomCellDecorator(),new Classroom.ClassroomComparator());
+					reportProducer.addContent(teacherSchedulerAccessorPool, new CellDecorator.TeacherCellDecorator(),new Teacher.TeacherComparator());
+                    reportProducer.addContent(teacherSchedulerAccessorPool, new StudentTeacherCellDecorator(),new Teacher.TeacherComparator());
+					reportProducer.addContent(classroomSchedulerAccessorPool, new CellDecorator.ClassroomCellDecorator(),new Classroom.ClassroomComparator());
 					reportProducer.addContent(classroomSchedulerAccessorPool, new StadentClassroomDecorator(),new Classroom.ClassroomComparator());
 					IOUtils.write(reportProducer.getReport(), outputStream,Charset.forName("UTF-8"));
 				} catch (IOException e) {
@@ -444,7 +444,8 @@ public class MainFrame {
 
 				}
 			}
-		});
+
+        });
 		menu.add(menuItem_9);
 
 		menu.addSeparator();
@@ -727,7 +728,7 @@ public boolean accept(File f) {
 }
 
 public String getDescription() {
-	return "SCR\u6587\u4ef6(.uor)";
+	return "SCR\u6587\u4ef6(*.uor)";
 }
 
 public String getEnds(){
