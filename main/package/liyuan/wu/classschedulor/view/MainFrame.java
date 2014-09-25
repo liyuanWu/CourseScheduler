@@ -1,30 +1,19 @@
 package liyuan.wu.classschedulor.view;
 
 
-import java.awt.EventQueue;
-import java.awt.Point;
-
-import javax.swing.*;
-
-import java.awt.BorderLayout;
-
 import liyuan.wu.classschedulor.accessor.AccessorPool;
 import liyuan.wu.classschedulor.accessor.BoatAccessor;
-import liyuan.wu.classschedulor.beans.ArrangePool;
-import liyuan.wu.classschedulor.beans.Boat;
-import liyuan.wu.classschedulor.beans.Classroom;
-import liyuan.wu.classschedulor.beans.CourseCombo;
-import liyuan.wu.classschedulor.beans.FileRecord;
-import liyuan.wu.classschedulor.beans.Scheduler;
-import liyuan.wu.classschedulor.beans.Teacher;
-import liyuan.wu.classschedulor.beans.UnarrangedCourse;
+import liyuan.wu.classschedulor.beans.*;
 import liyuan.wu.classschedulor.data.FileRecorder;
 import liyuan.wu.classschedulor.data.Pool;
 import liyuan.wu.classschedulor.data.Synchronizator;
 import liyuan.wu.classschedulor.report.ReportProducer;
+import org.apache.commons.io.IOUtils;
 
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.io.File;
@@ -33,21 +22,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import org.apache.commons.io.IOUtils;
 
 
 public class MainFrame {
@@ -106,7 +80,7 @@ public class MainFrame {
 			IllegalAccessException, UnsupportedLookAndFeelException {
 //		String windows = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 //		UIManager.setLookAndFeel(windows);
-//		UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
+		UIManager.setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
 //		UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 		teacherSchedulerAccessorPool = new AccessorPool<Teacher, BoatAccessor<Teacher,CourseCombo>>();
 		classroomSchedulerAccessorPool = new AccessorPool<Classroom,  BoatAccessor<Classroom,CourseCombo>>();
@@ -251,7 +225,7 @@ public class MainFrame {
 	
 					if(fileChooser.getSelectedFile()!=null){
 						FileRecord fileRecord = recorder.loadFileRecord(fileChooser.getSelectedFile());
-						teacherSet =Arrays.asList(fileRecord.getTeachers());
+						teacherSet = Arrays.asList(fileRecord.getTeachers());
 						classroomSet = Arrays.asList(fileRecord.getClassrooms());
 						for(ArrangePool<Teacher> arrangePool:fileRecord.getTeacherArrangePools()){
 							teacherArrangePoolSwitcher.addBoat(arrangePool);
@@ -365,7 +339,7 @@ public class MainFrame {
 				int fresult;
 				fresult = fileChooser.showSaveDialog(MainFrame.this.frame);
 				if (fresult == JFileChooser.APPROVE_OPTION) {
-				  File file = fileChooser.getSelectedFile(); 
+				  File file = fileChooser.getSelectedFile();
 				  UORFileFilter filter = (UORFileFilter)fileChooser.getFileFilter();
 				  String ends = filter.getEnds();
 				  File newFile = null;
@@ -436,7 +410,7 @@ public class MainFrame {
                     reportProducer.addContent(teacherSchedulerAccessorPool, new StudentTeacherCellDecorator(),new Teacher.TeacherComparator());
 					reportProducer.addContent(classroomSchedulerAccessorPool, new CellDecorator.ClassroomCellDecorator(),new Classroom.ClassroomComparator());
 					reportProducer.addContent(classroomSchedulerAccessorPool, new StadentClassroomDecorator(),new Classroom.ClassroomComparator());
-					IOUtils.write(reportProducer.getReport(), outputStream,Charset.forName("UTF-8"));
+					IOUtils.write(reportProducer.getReport(), outputStream, Charset.forName("UTF-8"));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

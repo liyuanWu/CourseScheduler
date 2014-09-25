@@ -1,5 +1,11 @@
 package liyuan.wu.classschedulor.view;
 
+import liyuan.wu.classschedulor.accessor.BoatAccessor;
+import liyuan.wu.classschedulor.beans.Classroom;
+import liyuan.wu.classschedulor.beans.Teacher;
+import liyuan.wu.classschedulor.beans.UnarrangedCourse;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -7,17 +13,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
-
-
-import liyuan.wu.classschedulor.accessor.BoatAccessor;
-import liyuan.wu.classschedulor.beans.Classroom;
-import liyuan.wu.classschedulor.beans.Teacher;
-import liyuan.wu.classschedulor.beans.UnarrangedCourse;
 
 public class ButtonList<T> extends JPanel {
 	private static final long serialVersionUID = 1L;

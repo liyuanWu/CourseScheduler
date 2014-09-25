@@ -1,10 +1,6 @@
 package liyuan.wu.classschedulor.view;
 
-import liyuan.wu.classschedulor.beans.Classroom;
-import liyuan.wu.classschedulor.beans.CourseCombo;
-import liyuan.wu.classschedulor.beans.Teacher;
-import liyuan.wu.classschedulor.beans.Time;
-import liyuan.wu.classschedulor.beans.WeekDay;
+import liyuan.wu.classschedulor.beans.*;
 
 public class SingleQueryResult {
 

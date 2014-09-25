@@ -1,10 +1,9 @@
 package liyuan.wu.classschedulor.view;
 
-import java.util.LinkedList;
-
 import liyuan.wu.classschedulor.beans.Classroom;
 import liyuan.wu.classschedulor.beans.Teacher;
-import liyuan.wu.classschedulor.view.ButtonListDecorator.ClassroomButtonListDecorator;
+
+import java.util.LinkedList;
 
 public class RefreshNotificationManager {
 

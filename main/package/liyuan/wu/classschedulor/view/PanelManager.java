@@ -1,26 +1,18 @@
 package liyuan.wu.classschedulor.view;
 
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import liyuan.wu.classschedulor.accessor.AccessorPool;
+import liyuan.wu.classschedulor.accessor.BoatAccessor;
+import liyuan.wu.classschedulor.beans.CourseCombo;
+import liyuan.wu.classschedulor.beans.UnarrangedCourse;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPopupMenu;
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import liyuan.wu.classschedulor.accessor.AccessorPool;
-import liyuan.wu.classschedulor.accessor.BoatAccessor;
-import liyuan.wu.classschedulor.beans.CourseCombo;
-import liyuan.wu.classschedulor.beans.UnarrangedCourse;
 
 public class PanelManager<T> extends JTabbedPane {
 

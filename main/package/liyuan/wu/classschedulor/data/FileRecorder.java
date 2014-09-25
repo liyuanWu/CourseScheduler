@@ -1,13 +1,10 @@
 package liyuan.wu.classschedulor.data;
 
-import java.io.File;
-
-import liyuan.wu.classschedulor.beans.CourseCombo;
 import liyuan.wu.classschedulor.beans.FileRecord;
-import liyuan.wu.classschedulor.beans.UnarrangedCourse;
-
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.XMLConfiguration;
+
+import java.io.File;
 
 public class FileRecorder {
 	private final RecordEncoder recordEncoder;

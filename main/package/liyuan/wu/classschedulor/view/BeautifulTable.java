@@ -1,38 +1,20 @@
 package liyuan.wu.classschedulor.view;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Point;
+import liyuan.wu.classschedulor.accessor.BoatAccessor;
+import liyuan.wu.classschedulor.beans.*;
+import liyuan.wu.classschedulor.view.SingleQueryResult.CELLATTRIBUTE;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 import java.util.Queue;
-import java.util.Set;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
-import liyuan.wu.classschedulor.accessor.BoatAccessor;
-import liyuan.wu.classschedulor.beans.Classroom;
-import liyuan.wu.classschedulor.beans.CourseCombo;
-import liyuan.wu.classschedulor.beans.Teacher;
-import liyuan.wu.classschedulor.beans.Time;
-import liyuan.wu.classschedulor.beans.UnarrangedCourse;
-import liyuan.wu.classschedulor.beans.WeekDay;
-import liyuan.wu.classschedulor.view.SingleQueryResult.CELLATTRIBUTE;
 
 public class BeautifulTable<T> extends JTable {
 
@@ -270,7 +252,7 @@ public class BeautifulTable<T> extends JTable {
 				}
 			}
 //			CellPopupMenu.this.scheduler.getSynchronizator().getBoat(toIn)
-			JMenuItem remove = new JMenuItem("ÒÆ³ý");
+			JMenuItem remove = new JMenuItem("ï¿½Æ³ï¿½");
 			remove.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {

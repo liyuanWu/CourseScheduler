@@ -1,15 +1,13 @@
 package liyuan.wu.classschedulor.view;
 
-import java.awt.Component;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-
 import liyuan.wu.classschedulor.accessor.BoatAccessor;
 import liyuan.wu.classschedulor.beans.CourseCombo;
 import liyuan.wu.classschedulor.beans.UnarrangedCourse;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 public class Panel<T> extends JSplitPane {
 	/**
